@@ -6,29 +6,40 @@
         </div>
         <div class="py-5">
             <div class="row">
-                {% for book in task_list %}
+                {% for task in task_list %}
                 <div class="col-md-4">
-{#                    <a class="text-dark" href="{% url 'books:book-detail' slug=book.slug %}">#}
+                    <a class="text-dark" href="{% url 'todo:task-detail' pk=task.id %}">
                         <div class="card mb-4 box-shadow">
                             <div class="card-body">
                                 <h2 style="font-size:18px;font-weight:bold;min-height:42px;">
-                                    {{book.content}}</h2>
+                                    {{task.content}}</h2>
                                 <h2 style="font-size: 18px; font-weight: bold; min-height: 42px;
                                     {% if book.is_done %} color: green; {% else %} color: red; {% endif %}"
                                 >
-                                    {% if book.is_done %} Done {% else %} Not done {% endif %}
+                                    {% if task.is_done %} Done {% else %} Not done {% endif %}
                                 </h2>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">Created: {{book.created_datetime}}</small>
+                                    <small class="text-muted">Created: {{task.created_datetime}}</small>
 {#                                    <small class="text-muted">{{book.is_done}}</small>#}
                                 </div>
                                 <small class="text-muted">Tags: </small>
-                                {% for tag in book.tags.all %}
+                                {% for tag in task.tags.all %}
                                   <small class="text-muted">{{ tag }}</small>
                                 {% endfor %}
+                            <button type="button" class="btn btn-primary">
+                              <a class="text-dark" href="{% url 'todo:task-detail' pk=task.id %}">
+                                Update
+                              </a>
+                            </button>
+                            <button type="button" class="btn btn-danger">
+                              <a class="text-dark" href="{% url 'todo:task-delete' pk=task.id %}">
+                              Delete
+                              </a>
+                            </button>
+
                             </div>
                         </div>
-{#                    </a>#}
+                    </a>
                 </div>
                 {% endfor %}
             </div>
