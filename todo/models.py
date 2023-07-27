@@ -9,7 +9,7 @@ class Task(models.Model):
     tags = models.ManyToManyField("Tag", related_name="tasks", blank=True)
 
     class Meta:
-        ordering = ["-is_done"]
+        ordering = ["-is_done", "created_datetime"]
 
     def __str__(self):
         return self.content

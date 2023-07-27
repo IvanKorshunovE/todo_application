@@ -13,7 +13,7 @@ from todo.views import (
 )
 
 urlpatterns = [
-    path("tasks/", TaskListView.as_view(), name="task-list"),
+    path("", TaskListView.as_view(), name="task-list"),
     path("tasks/create/", CreateTaskView.as_view(), name="task-create"),
     path("tasks/<int:pk>/complete/", ToggleAssignToTaskView.as_view(), name="toggle-complete"),
     path("tasks/<int:pk>/delete/", TaskDeleteView.as_view(), name="task-delete"),
