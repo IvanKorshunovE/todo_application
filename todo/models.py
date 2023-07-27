@@ -8,6 +8,9 @@ class Task(models.Model):
     is_done = models.BooleanField(default=False)
     tags = models.ManyToManyField("Tag", related_name="tasks", blank=True)
 
+    class Meta:
+        ordering = ["-is_done"]
+
     def __str__(self):
         return self.content
 

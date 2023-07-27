@@ -1,0 +1,13 @@
+{% if not task.is_done %}
+<button type="button" class="btn btn-success ml-5">
+<a href="{% url 'todo:toggle-complete' pk=task.id %}" class="text-white">
+  Complete
+</a>
+</button>
+{% else %}
+<button type="button" class="btn btn-secondary ml-5">
+<a href="{% url 'todo:toggle-complete' pk=task.id %}" class="text-white">
+  Undo
+</a>
+</button>
+{% endif %}

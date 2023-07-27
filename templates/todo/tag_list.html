@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">
+      All Tags <button type="button" class="btn btn-success ml-5">
+      <a href="{% url 'todo:tag-create'%}" class="text-white">
+      Create tag
+      </a>
+      </button>
+    </h1>
+  </div>
+  <div class="py-5">
+    <div class="row">
+      {% for tag in tag_list %}
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <h2 style="font-size:18px;font-weight:bold;min-height:42px;">
+              {{tag.name}}
+            </h2>
+            <br><br>
+            <button type="button" class="btn btn-primary">
+            <a class="text-white"
+              href="{% url 'todo:tag-update' pk=tag.id %}"
+              >
+            Update
+            </a>
+            </button>
+            <button type="button" class="btn btn-danger">
+            <a class="text-white"
+              href="{% url 'todo:tag-delete' pk=tag.id %}"
+              >
+            Delete
+            </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
